@@ -1,0 +1,25 @@
+import turtle
+
+def arc(t,r,angle,n):
+    length = 2*3.14159*r/(n*4)
+    for i in range(n*angle//360):
+        t.fd(length)
+        t.lt(360/n)
+
+def fib_spiral(t,div,quarters):
+    #Makes a fibonacci spiral approximated with "quarters" segments, with each segment split into div lines.
+    
+    fib = [0]*quarters
+    for i in range(quarters):
+        if i <2:
+            fib[i] = 1
+        else:
+            fib[i] = fib[i-1] + fib[i-2]
+    for j in range(quarters):
+        arc(t,fib[j]*2,90,div*4)
+
+        
+bob = turtle.Turtle()
+fib_spiral(bob, 10,15)
+
+turtle.mainloop()
